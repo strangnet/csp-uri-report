@@ -131,8 +131,6 @@ dist
 # User-specific stuff
 .idea
 
-# Generated files
-.idea
 
 # Gradle and Maven with auto-import
 # When using Gradle or Maven with auto-import, you should exclude module files,
@@ -144,8 +142,8 @@ dist
 # .idea/modules.xml
 # .idea/*.iml
 # .idea/modules
-# *.iml
-# *.ipr
+*.iml
+*.ipr
 
 # CMake
 cmake-build-*/
