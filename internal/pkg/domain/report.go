@@ -22,10 +22,11 @@ type Report struct {
 	ScriptSample       string    `json:"scriptSample"`
 }
 
-// ReportRepository is a repository
+// ReportRepository is a repository interface
 type ReportRepository interface {
 	Create(report *Report) error
 	GetByID(id uuid.UUID) (*Report, error)
+	ListReports() ([]*Report, error)
 }
 
 // NewReport creates a new report

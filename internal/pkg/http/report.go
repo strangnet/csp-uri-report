@@ -60,10 +60,23 @@ func (h *reportHandler) getReport(writer http.ResponseWriter, request *http.Requ
 	}
 
 	report, err := h.rs.GetByID(id)
+	if err != nil {
+		h.encoder.Error(ctx, writer, err)
+		return
+	}
 
 	h.encoder.Response(writer, report)
 }
 
 func (h *reportHandler) listReports(writer http.ResponseWriter, request *http.Request) {
+	ctx := request.Context()
 
+	reports, err := h.rs.ListReports()
+
+	if err != nil {
+		h.encoder.Error(ctx, writer, err)
+		return
+	}
+
+	h.encoder.Response(writer, reports)
 }

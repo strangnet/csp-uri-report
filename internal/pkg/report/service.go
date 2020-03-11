@@ -11,6 +11,7 @@ import (
 type Service interface {
 	Create(ctx context.Context, data CreateReportData) (*CreateReportResult, error)
 	GetByID(id uuid.UUID) (*domain.Report, error)
+	ListReports() ([]*domain.Report, error)
 }
 
 type service struct {
@@ -48,4 +49,8 @@ func (s *service) Create(ctx context.Context, data CreateReportData) (*CreateRep
 
 func (s *service) GetByID(id uuid.UUID) (*domain.Report, error) {
 	return s.reports.GetByID(id)
+}
+
+func (s *service) ListReports() ([]*domain.Report, error) {
+	return s.reports.ListReports()
 }

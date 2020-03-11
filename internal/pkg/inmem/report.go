@@ -9,6 +9,7 @@ import (
 	"github.com/strangnet/csp-uri-report/internal/pkg/domain"
 )
 
+// ReportRepository is an inmem repository
 type ReportRepository struct {
 	reports map[uuid.UUID]*domain.Report
 	mu      sync.RWMutex
@@ -44,4 +45,18 @@ func (r *ReportRepository) GetByID(id uuid.UUID) (*domain.Report, error) {
 	}
 
 	return report, nil
+}
+
+// ListReports returns a list of all reports
+func (r *ReportRepository) ListReports() ([]*domain.Report, error) {
+	r.mu.RLock()
+	defer r.mu.RUnlock()
+
+	var reports []*domain.Report
+
+	for _, report := range r.reports {
+		reports = append(reports, report)
+	}
+
+	return reports, nil
 }
