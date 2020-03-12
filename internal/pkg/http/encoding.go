@@ -12,7 +12,7 @@ type encoder struct {
 	logger *log.Logger
 }
 
-func NewEncoder(logger *log.Logger) *encoder {
+func newEncoder(logger *log.Logger) *encoder {
 	return &encoder{
 		logger: logger,
 	}

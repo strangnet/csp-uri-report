@@ -76,6 +76,6 @@ func NewServer(logger *log.Logger, addr string, rs report.Service) Server {
 		logger:  logger,
 		addr:    addr,
 		rs:      rs,
-		encoder: NewEncoder(logger),
+		encoder: newEncoder(logger),
 	}
 }
